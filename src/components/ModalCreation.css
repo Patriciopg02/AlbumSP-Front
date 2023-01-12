@@ -1,0 +1,33 @@
+.containerModal{
+    width: 35vw;
+    height: 40vh;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: .1vw .7vw 2vw rgba(0,0,0,0.6);
+    position: relative;
+    animation: appear 1s;
+}
+
+.containerModal header {
+    padding: 1vw;
+    background-color: hotpink;
+    color: #fff;
+}
+
+.containerModal #closeModal {
+    position: absolute;
+    top: .8vw;
+    right: 1vw;
+    color: #fff;
+    font-size: 1.5vw;
+    cursor: pointer;
+}
+
+@keyframes appear {
+    0%{
+        transform: translateY(-30%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
