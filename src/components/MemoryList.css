@@ -1,7 +1,6 @@
 .container {
 	width: 90%;
 	max-width: 1200px;
-	margin: 100px auto;
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -36,15 +35,23 @@
 	position: absolute;
 	z-index: 2;
 	top: calc(50% - 9px);
-	left: calc(50% - 9px);
+	left: calc(50% - 7px);
 }
 
-.fecha {
+.description {
+	width:30vw;
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
-	justify-content: start;
-	width: calc(42% + 20px);
+}
+
+.description h3 {
 	font-size: 32px;
+	font-weight: normal;
+}
+.description p {
+	font-size: 20px;
 	font-weight: normal;
 }
 
@@ -84,4 +91,23 @@
 	border-right: 20px solid #fff;
 	right: initial;
 	left: -50px;
+}
+
+.fecha {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #ffffff;
+	z-index: 2;
+	padding: 4vw;
+	margin-bottom:8vw;
+}
+.fecha h3 {
+	font-size: 40px;
+	font-weight: normal;
+}
+.fecha p {
+	font-size: 30px;
+	font-weight: normal;
 }
