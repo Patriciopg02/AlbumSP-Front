@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import GetMemorys from './GetMemorys';
 import './MemoryList.css';
 
-export default function MemoryList() {
+export default function MemoryList({edit}) {
 
     const [memorys, setMemorys] = useState([]);
 
@@ -31,6 +31,7 @@ export default function MemoryList() {
                                     <h3>{m.date}</h3>
                                     <p >{m.description}</p>
                                 </div>
+                                
                             </div>
                         )
                     }
