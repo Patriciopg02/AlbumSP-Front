@@ -16,7 +16,9 @@ function App() {
         <h1>Mis Viajes</h1>
       </div>
       <div>
-          <label onClick={changeEdit}>Editar recuerdos</label>
+        {
+          edit ? <label onClick={changeEdit}>Finalizar edicion</label> : <label onClick={changeEdit}>Editar recuerdos</label>
+        }
       </div>
       <CreateMemory/>
       <MemoryList edit={edit}/>

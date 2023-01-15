@@ -3,10 +3,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import Validate from './Validate';
 import { useState } from 'react';
+import UploadImage from './UploadImage';
 
 export default function ModalCreation({ setOpenModal }) {
 
     const [form, setForm] = useState(false);
+    const [urlImage, setUrlImage] = useState('');
 
     const changeForm = () => {
         setForm(!form);
@@ -19,7 +21,7 @@ export default function ModalCreation({ setOpenModal }) {
 
     const onSubmit = (values, { resetForm }) => {
         axios.post(`${process.env.REACT_APP_MY_API_URL}/memory`, {
-            image: values.image,
+            image: urlImage,
             date: values.date,
             description: values.description
         })
@@ -53,15 +55,6 @@ export default function ModalCreation({ setOpenModal }) {
                                 >
                                     {({ errors }) => (
                                         <Form>
-                                            <div className='inputCont'>
-                                                <label htmlFor='image'>Foto</label>
-                                                <Field
-                                                    type='text'
-                                                    id='image'
-                                                    name='image'
-                                                />
-                                            </div>
-
 
                                             <div className='inputCont'>
                                                 <label htmlFor='date'>Fecha</label>
@@ -80,6 +73,9 @@ export default function ModalCreation({ setOpenModal }) {
                                                     name='description'
                                                 />
                                             </div>
+
+                                            <UploadImage setUrlImage={setUrlImage}/>
+
                                             <ErrorMessage name='date' component={() => (<div className='error'> {errors.date} </div>)} />
                                             <ErrorMessage name='description' component={() => (<div className='error'> {errors.description} </div>)} />
 
