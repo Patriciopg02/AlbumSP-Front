@@ -1,14 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
-
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400&family=Rowdies&display=swap');
 
 .App {
-	background: #DCDFD9;
-    font-family: 'Readex Pro', sans-serif;
+	background: url('./backgrounds/fondoHome.jpeg');
+	min-width: 98.7vw;
+	max-width: 98.7vw;
+	min-height: 100vh;
+	overflow-x: hidden;
+	background-size: 100vw;
 	color: #1b3231;
 	padding-bottom: 4vh;
 }
@@ -17,8 +15,114 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	font-family: 'Rowdies';
 	min-height: 35vh;
-	font-size: 36px;
 	text-transform: uppercase;
+}
+
+.hero h1 {
+	font-size: 55px;
+}
+
+.homeButtons {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 10vh;
+	border: .1vw solid #f58474;
+	padding: 3vw;
+	backdrop-filter: blur(15px);
+}
+.homeButtons label{
+	background: linear-gradient(50deg,#ed6857,#ffb2a8,#ffcec7);
+	border: .1vw solid #ed6857;
+	font-family: 'Kanit';
+	padding: .5vw;
+	border-radius: 2vw;
+	transition: all .2s;
+	cursor: pointer;
+	position: relative;
+}
+.homeButtons label:hover{
+	box-shadow: .1vw .1vw .4vw #000;
+}
+
+/* CREAR RECUERDO */
+#inp {
+    display: none;
+}
+#pwd {
+    display: none;
+}
+#labelPassword {
+    display: none;
+}
+#pwdButton {
+    display: none;
+}
+#inp:checked ~ .ButtonCreation #labelPassword {
+    display: block;
+}
+#inp:checked ~ .ButtonCreation #labelAdd {
+    display: none;
+}
+#inp:checked ~ .ButtonCreation .password #pwd {
+    display: block;
+}
+#inp:checked ~ .ButtonCreation .password #pwdButton {
+    display: block;
+}
+
+/* EDITAR RECUERDO */
+#inpEdit {
+    display: none;
+}
+#pwdEdit {
+    display: none;
+}
+#labelPasswordEdit {
+    display: none;
+}
+#pwdButtonEdit {
+    display: none;
+}
+#inpEdit:checked ~ .ButtonCreation #labelPasswordEdit {
+    display: block;
+}
+#inpEdit:checked ~ .ButtonCreation #labelEdit {
+    display: none;
+}
+#inpEdit:checked ~ .ButtonCreation .password #pwdEdit {
+    display: block;
+}
+#inpEdit:checked ~ .ButtonCreation .password #pwdButtonEdit {
+    display: block;
+}
+
+.password{
+    display: flex;
+    position: absolute;
+    margin: .5vw;
+    margin-left: -1vw;
+}
+.password input {
+    background: linear-gradient(50deg,#ed6857,#ffb2a8,#ffcec7);
+	border: .1vw solid #ed6857;
+    border-radius: 2vw;
+    margin-right: .2vw;
+    transition: all .2s;
+    padding-left: .5vw;
+}
+.password input:hover {
+    box-shadow: .1vw .1vw .4vw #000;
+}
+.password button {
+    background: linear-gradient(50deg,#ed6857,#ffb2a8,#ffcec7);
+	border: .1vw solid #ed6857;
+    border-radius: .5vw;
+    transition: all .2s;
+}
+.password button:hover {
+    box-shadow: .1vw .1vw .4vw #000;
 }
 

@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState } from "react"
 
-export default function UploadImage({setUrlImage}) {
+export default function UploadImage({setUrlImage, setLoading, loading}) {
 
-    const [loading, setLoading] = useState(0)
+    
 
     const handleInputFile = (e) => {
         setLoading(1);
@@ -37,14 +37,16 @@ export default function UploadImage({setUrlImage}) {
 
 
     return (
-        <div>
+        <div className="uploadImage">
             <input
+            id='uploadImageInput'
             type='file'
             name='file'
             onChange={handleInputFile}
             />
+            <label for='uploadImageInput'>Subir Imagen</label>
             {
-                loading===1 && <h3>Cargando...</h3> || loading===2 && <h3>Imagen Cargada ✔️</h3>
+                (loading===1 && <p>Cargando...</p>) || (loading===2 && <p>Imagen Cargada ✔️</p>)
             }
         </div>
     )

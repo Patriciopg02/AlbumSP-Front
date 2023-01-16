@@ -5,17 +5,14 @@ import Validate from './Validate';
 import { useState } from 'react';
 import UploadImage from './UploadImage';
 
-export default function ModalCreation({ setOpenModal }) {
+export default function ModalCreation({ setOpenModalCreator }) {
 
+    const [loading, setLoading] = useState(0)
     const [form, setForm] = useState(false);
     const [urlImage, setUrlImage] = useState('');
 
-    const changeForm = () => {
-        setForm(!form);
-    }
-
     const closeModal = () => {
-        setOpenModal(false);
+        setOpenModalCreator(false);
         window.location = window.location.href
     }
 
@@ -33,102 +30,51 @@ export default function ModalCreation({ setOpenModal }) {
     }
 
     return (
-        <div className="containerModal">
-            <header>Recuerdos</header>
-            <label id='closeModal' onClick={() => closeModal()}>X</label>
-            <div className="content">
+        <div className='modal'>
+            <div className="containerModal">
+                <header>Crear Recuerdo</header>
+                <label id='closeModal' onClick={() => closeModal()}>X</label>
+                <div className="content">
+                    <Formik
+                        initialValues={{
+                            image: '',
+                            date: '',
+                            description: ''
+                        }}
 
-                {
-                    form === false ?
-                        <div>
-                            <label onClick={changeForm}>Añadir fecha</label>
-                            <div className="MemorysForm">
-                                <Formik
-                                    initialValues={{
-                                        image: '',
-                                        date: '',
-                                        description: ''
-                                    }}
+                        validate={Validate}
+                        onSubmit={onSubmit}
+                    >
+                        {({ errors }) => (
+                            <Form>
+                                <div className='inputCont'>
+                                    <label htmlFor='date'>Fecha</label>
+                                    <Field
+                                        type='text'
+                                        id='date'
+                                        name='date'
+                                    />
+                                </div>
 
-                                    validate={Validate}
-                                    onSubmit={onSubmit}
-                                >
-                                    {({ errors }) => (
-                                        <Form>
+                                <div className='inputCont'>
+                                    <label htmlFor='description'>Descripcion</label>
+                                    <Field
+                                        type='text'
+                                        id='description'
+                                        name='description'
+                                    />
+                                </div>
 
-                                            <div className='inputCont'>
-                                                <label htmlFor='date'>Fecha</label>
-                                                <Field
-                                                    type='text'
-                                                    id='date'
-                                                    name='date'
-                                                />
-                                            </div>
+                                <UploadImage setUrlImage={setUrlImage} setLoading={setLoading} loading={loading} />
 
-                                            <div className='inputCont'>
-                                                <label htmlFor='description'>Descripcion</label>
-                                                <Field
-                                                    type='text'
-                                                    id='description'
-                                                    name='description'
-                                                />
-                                            </div>
-
-                                            <UploadImage setUrlImage={setUrlImage}/>
-
-                                            <ErrorMessage name='date' component={() => (<div className='error'> {errors.date} </div>)} />
-                                            <ErrorMessage name='description' component={() => (<div className='error'> {errors.description} </div>)} />
-
-                                            <button type='submit'>Añadir</button>
-                                        </Form>
-                                    )}
-                                </Formik>
-                            </div>
-                        </div>
-
-                        :
-                        <div>
-                            <label onClick={changeForm}>Añadir recuerdo</label>
-                            <div className="DatesForm">
-                                <Formik
-                                    initialValues={{
-                                        date: '',
-                                        description: ''
-                                    }}
-
-                                    validate={Validate}
-                                    onSubmit={onSubmit}
-                                >
-                                    {({ errors }) => (
-                                        <Form>
-
-                                            <div className='inputCont'>
-                                                <label htmlFor='date'>Fecha</label>
-                                                <Field
-                                                    type='text'
-                                                    id='date'
-                                                    name='date'
-                                                />
-                                            </div>
-
-                                            <div className='inputCont'>
-                                                <label htmlFor='description'>Descripcion</label>
-                                                <Field
-                                                    type='text'
-                                                    id='description'
-                                                    name='description'
-                                                />
-                                            </div>
-                                            <ErrorMessage name='date' component={() => (<div className='error'> {errors.date} </div>)} />
-                                            <ErrorMessage name='description' component={() => (<div className='error'> {errors.description} </div>)} />
-
-                                            <button type='submit'>Añadir</button>
-                                        </Form>
-                                    )}
-                                </Formik>
-                            </div>
-                        </div>
-                }
+                                {
+                                    ((loading === 1 || (errors.date || errors.description)) && <button type='submit' disabled>Añadir</button>) || ((loading === 2 || loading === 0) && <button type='submit'>Añadir</button>)
+                                }
+                                
+                            </Form>
+                        )}
+                    </Formik>
+                </div>
             </div>
         </div>
     )

@@ -1,8 +1,22 @@
+.modal {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 5;
+    font-family: 'Kanit';
+}
+
 .containerModal{
     width: 35vw;
-    height: 40vh;
-    margin: auto;
-    background-color: #fff;
+    height: 45vh;
+    text-align: center;
+    background-color: #ffb7ae;
     box-shadow: .1vw .7vw 2vw rgba(0,0,0,0.6);
     position: relative;
     animation: appear 1s;
@@ -10,8 +24,9 @@
 
 .containerModal header {
     padding: 1vw;
-    background-color: hotpink;
+    background-color: #f58474;
     color: #fff;
+    text-shadow: .1vw .1vw .2vw #000;
 }
 
 .containerModal #closeModal {
@@ -21,6 +36,76 @@
     color: #fff;
     font-size: 1.5vw;
     cursor: pointer;
+}
+.content {
+    padding-top: 2vh;
+    text-align: center;
+}
+
+.content .inputCont{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.content .inputCont input {
+    margin: .8vw;
+    background: linear-gradient(50deg,#ed6857,#ffb2a8,#ffcec7);
+    width: 30vw;
+    border: .1vw solid #ed6857;
+    border-radius: 2vw;
+    padding-left: .5vw;
+}
+.content .inputCont label {
+    color: #fff;
+    text-shadow: .1vw .1vw .2vw #000;
+}
+.content button {
+    margin: 1vw;
+}
+.content button, #aceptarDelete {
+    background: linear-gradient(50deg,#ed6857,#ffb2a8,#ffcec7);
+    border: .1vw solid #ed6857;
+    border-radius: 2vw;
+    width: 6vw;
+    transition: all .2s;
+}
+.content button:hover, #aceptarDelete:hover{
+	box-shadow: .1vw .1vw .4vw #000;
+}
+.uploadImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploadImage #uploadImageInput{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.uploadImage label[for="uploadImageInput"] {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #ed6857;
+    display: inline-block;
+    transition: all .5s;
+    cursor: pointer;
+    padding: 5px 10px !important;
+    border-radius: 15px;
+    margin: .5vw;
+    text-transform: uppercase;
+    width: fit-content;
+    text-align: center;
+}
+.uploadImage p {
+    position: absolute;
+    margin-left: 22vw;
+    margin-top: 1vw;
 }
 
 @keyframes appear {

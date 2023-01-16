@@ -20,6 +20,8 @@
 .evento {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	font-family: 'Kanit';
 	margin-bottom: 200px;
 	position: relative;
 }
@@ -30,7 +32,7 @@
 	width: 14px;
 	height: 14px;
 	border-radius: 100px;
-	background: #DCDFD9;
+	background: #ed6857;
 	border: 2px solid #1b3231;
 	position: absolute;
 	z-index: 2;
@@ -44,19 +46,27 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	height: fit-content;
+	backdrop-filter: blur(1vw);
+	padding: 2vw;
+	border-radius: 25px;
 }
 
 .description h3 {
-	font-size: 32px;
+	text-align: center;
+	color: #8a1e0f;
+	text-shadow: .1vw .1vw .4vw #fff;
+	font-size: 50px;
 	font-weight: normal;
+	overflow-y: hidden;
 }
 .description p {
-	font-size: 20px;
+	font-size: 35px;
 	font-weight: normal;
 }
 
 .foto {
-	width: 42%;
+	width: 35%;
 	border: 10px solid #fff;
 	position: relative;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -93,21 +103,52 @@
 	left: -50px;
 }
 
+.evento .buttonsContainer {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 1vw;
+	left: 3vw;
+	z-index: 2;
+}
+.fecha .buttonsContainer {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 1.5vw;
+	left: 3vw;
+	z-index: 2;
+}
+.fecha .buttonsContainer button, .evento .buttonsContainer button {
+	background: linear-gradient(50deg,#ed6857,#ffb2a8,#ffcec7);
+	border: .1vw solid #ed6857;
+	transition: all .2s;
+	margin: 0.5vw;
+	padding: 0.2vw;
+	border-radius: 2vw;
+}
+.fecha .buttonsContainer button:hover, .evento .buttonsContainer button:hover {
+	box-shadow: .1vw .1vw .4vw #000;
+}
+
 .fecha {
 	display: flex;
+	font-family: 'Kanit';
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: #ffffff;
+	background: linear-gradient(50deg,#ea5f8d,#ffa3c2,#fedee8);
+	border-radius: 25vw;
 	z-index: 2;
-	padding: 4vw;
+	padding: 2vw;
 	margin-bottom:8vw;
+	transition: all .5s;
 }
 .fecha h3 {
-	font-size: 40px;
+	font-size: 50px;
 	font-weight: normal;
 }
 .fecha p {
-	font-size: 30px;
+	font-size: 35px;
 	font-weight: normal;
 }

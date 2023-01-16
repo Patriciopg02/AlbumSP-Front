@@ -7,7 +7,6 @@ export default function EditMemory({ setEditModal, id, date, description }) {
 
     const closeModal = () => {
         setEditModal(false);
-        window.location = window.location.href
     }
 
     const onSubmit = (values, { resetForm }) => {
@@ -17,6 +16,7 @@ export default function EditMemory({ setEditModal, id, date, description }) {
         })
             .then(function (response) {
                 alert('Recuerdo añadido <3')
+                window.location = window.location.href
                 resetForm();
             })
             .catch(function (err) { console.log(err) });
@@ -24,9 +24,8 @@ export default function EditMemory({ setEditModal, id, date, description }) {
 
     return (
         <div className='modal'>
-
             <div className="containerModal">
-                <header>Recuerdos</header>
+                <header>Editar Recuerdo</header>
                 <label id='closeModal' onClick={() => closeModal()}>X</label>
                 <div className="content">
                     <div className="MemorysForm">
@@ -59,11 +58,9 @@ export default function EditMemory({ setEditModal, id, date, description }) {
                                             name='description'
                                         />
                                     </div>
-
-                                    <ErrorMessage name='date' component={() => (<div className='error'> {errors.date} </div>)} />
-                                    <ErrorMessage name='description' component={() => (<div className='error'> {errors.description} </div>)} />
-
-                                    <button type='submit'>Editar</button>
+                                    {
+                                        (errors.date || errors.description) ? <button type='submit' disabled>Editar</button> : <button type='submit'>Editar</button>
+                                    }
                                 </Form>
                             )}
                         </Formik>

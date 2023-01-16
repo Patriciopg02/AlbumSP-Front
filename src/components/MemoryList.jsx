@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
+import DeleteMemory from './DeleteMemory';
 import EditMemory from './EditMemory';
 import GetMemorys from './GetMemorys';
 import './MemoryList.css';
+import ModalCreation from './ModalCreation';
 
-export default function MemoryList({ edit }) {
+export default function MemoryList({ edit, openModalCreator, setOpenModalCreator }) {
+    console.log(openModalCreator);
 
     const [memorys, setMemorys] = useState([]);
 
@@ -37,9 +40,9 @@ export default function MemoryList({ edit }) {
                             <div className="evento">
                                 {
                                     edit &&
-                                    <div>
-                                        <button onClick={() => editFunction(m._id)}>Edit</button>
-                                        <button onClick={deleteFunction}>Delete</button>
+                                    <div className='buttonsContainer'>
+                                        <button onClick={() => editFunction(m._id)}>Editar ✏️</button>
+                                        <button onClick={() => deleteFunction(m._id)}>Eliminar ❌</button>
                                     </div>
                                 }
                                 <div className="foto">
@@ -50,11 +53,11 @@ export default function MemoryList({ edit }) {
                                     <p >{m.description}</p>
                                 </div>
                                 {
-                                    editModal === m._id && <EditMemory setEditModal={setEditModal} id={m._id} date={m.date} description={m.description}/>
+                                    editModal === m._id && <EditMemory setEditModal={setEditModal} id={m._id} date={m.date} description={m.description} />
                                 }
-                                {/* {
-                                    deleteModal && <DeleteMemory setDeleteModal={setDeleteModal} id={m._id}/>
-                                } */}
+                                {
+                                    deleteModal === m._id && <DeleteMemory setDeleteModal={setDeleteModal} id={m._id} />
+                                }
                             </div>
                         )
                     }
@@ -63,23 +66,26 @@ export default function MemoryList({ edit }) {
                             <div className="fecha">
                                 {
                                     edit &&
-                                    <div>
-                                        <button key={m._id} onClick={editFunction}>Edit</button>
-                                        <button key={m._id} onClick={deleteFunction}>Delete</button>
+                                    <div className='buttonsContainer'>
+                                        <button onClick={() => editFunction(m._id)}>Editar ✏️</button>
+                                        <button onClick={() => deleteFunction(m._id)}>Eliminar ❌</button>
                                     </div>
                                 }
                                 <h3>{m.date}</h3>
                                 <p >{m.description}</p>
                                 {
-                                    editModal === m._id && <EditMemory setEditModal={setEditModal} id={m._id} date={m.date} description={m.description}/>
+                                    editModal === m._id && <EditMemory setEditModal={setEditModal} id={m._id} date={m.date} description={m.description} />
                                 }
-                                {/* {
-                                    deleteModal && <DeleteMemory setDeleteModal={setDeleteModal} id={m._id}/>
-                                } */}
+                                {
+                                    deleteModal === m._id && <DeleteMemory setDeleteModal={setDeleteModal} id={m._id} />
+                                }
                             </div>
                         )
                     }
                 })
+            }
+            {
+                openModalCreator === true && <ModalCreation setOpenModalCreator={setOpenModalCreator} />
             }
         </div>
     )
