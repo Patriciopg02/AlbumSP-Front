@@ -69,6 +69,7 @@
     border-radius: 2vw;
     width: 6vw;
     transition: all .2s;
+    cursor:pointer;
 }
 .content button:hover, #aceptarDelete:hover{
 	box-shadow: .1vw .1vw .4vw #000;
